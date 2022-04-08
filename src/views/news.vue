@@ -15,15 +15,7 @@
           v-for="(item, index) in toBeShown"
           :key="index"
         >
-          <div class="w-100 card">
-            <b-img fluid :src="item.enclosure.link" class="card__img"></b-img>
-            <div class="card__content">
-              <h4 class="card__card-heading">{{ item.title }}</h4>
-              <p v-if="item && item.pubDate" class="card__card-date">
-                {{ $moment(item.pubDate).format("DD/MM/YYYY") }}
-              </p>
-            </div>
-          </div>
+         <Card :item="item" />
         </b-col>
       </b-row>
       <b-row align-h="center">
@@ -35,7 +27,9 @@
 
 <script>
 import axios from "axios";
+import Card from "../components/CardNews.vue"
 export default {
+  components:{Card},
   data() {
     return {
       articles: [],
